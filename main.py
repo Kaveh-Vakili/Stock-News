@@ -1,4 +1,6 @@
 import requests
+import datetime as dt
+
 
 STOCK_NAME = "TSLA"
 COMPANY_NAME = "Tesla Inc"
@@ -10,11 +12,43 @@ API_KEY="O6SDHQUY6YPFWJAA"
 
 NEWS_KEY="44ec0cf826034511b55405586b50b2db"
 
-stock_parameters={
-    "function": "TIME_SERIES_DAILY",
+
+
+def price_check(name):
+    params={
+      "function": "TIME_SERIES_DAILY",
     "symbol":STOCK_NAME,
     "apikey":API_KEY,
 }
+        
+response=requests.get(STOCK_ENDPOINT,params=params)     
+
+
+    
+def change_calculation(data):
+    
+    dataes=list(data)
+    
+    
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -50,6 +84,13 @@ if(difference_percent>0.1):
        
    }
 the_news_response=requests.get(NEWS_ENDPOINT,params=news_parameters)
-print(the_news_response.json())
+theArticles=the_news_response.json()["articles"]
+print(theArticles)
 
-    
+firstThreeArticles=theArticles[:3]
+
+print(firstThreeArticles)
+
+
+
+     
