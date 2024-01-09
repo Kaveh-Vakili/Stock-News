@@ -8,6 +8,8 @@ NEWS_ENDPOINT = "https://newsapi.org/v2/everything"
 
 API_KEY="O6SDHQUY6YPFWJAA"
 
+NEWS_KEY="44ec0cf826034511b55405586b50b2db"
+
 stock_parameters={
     "function": "TIME_SERIES_DAILY",
     "symbol":STOCK_NAME,
@@ -39,3 +41,15 @@ difference=abs(float(yesterday_Closing_Price)-float(two_days_Ago_Price))
 
 difference_percent=(difference/float(yesterday_Closing_Price)*100)
 print(difference_percent)
+
+if(difference_percent>0.1):
+   news_parameters={
+       
+     "apiKEY":NEWS_KEY,
+     "qInTitle":COMPANY_NAME
+       
+   }
+the_news_response=requests.get(NEWS_ENDPOINT,params=news_parameters)
+print(the_news_response.json())
+
+    
